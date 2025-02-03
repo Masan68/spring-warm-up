@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package ch{
+    package etmles{
+        package payroll{
+            package "Controllers"{
+                class EmployeeController {
+                    -EmployeeRepository repository
+
+                    +EmployeeController(EmployeeRepository repository)
+                    +List<Employee> all()
+                    +Employee newEmployee(@ResquestBody Employee newEmployee)
+                    +Employee one(@PathVariable Long id)
+                }
+
+
+                class EmployeeNotFoundAdvice {
+                    String employeeNotFoundHandler
+                }
+
+                exception EmployeeNotFoundException {
+                    EmployeeNotFoundException(Long id)
+                }
+            }
+
+            interface EmployeeRepository <extends : JpaRepository<Employee, Long>> {
+
+            }
+
+
+
+            package Entities{
+                class Employee{
+                    -@Id
+                    -@GeneratedValue Long id
+                    -String name
+                    -String role
+
+                    +Employee()
+                    +Employee(Sttring name, String role)
+                    +Long getID()
+                    +void setID(Long id)
+                    +String String getName()
+                    +void setName(String name)
+                    +String getRole()
+                    +void setRole(String role)
+                    +bolean equals(Object o)
+                    +int hashCode()
+                    +String toString()
+                }
+            }
+
+            package Repositories{
+                class PayrollApplication{}
+
+            EmployeeController <-- EmployeeRepository
+            Employee --> EmployeeController
+            EmployeeNotFoundException <-- EmployeeController
+            EmployeeNotFoundException --> EmployeeNotFoundAdvice
+        }
+    }
+}
+@enduml
