@@ -66,6 +66,11 @@ public class EmployeeController {
     */
     @DeleteMapping("/employees/{id}")
     void deleteEmployee(@PathVariable Long id){
-        repository.deleteById(id);
+        if(!repository.existsById(id)){
+            throw new EmployeeNotFoundDeleted(id);
+        }else{
+            repository.deleteById(id);
+        }
+
     }
 }
