@@ -1,8 +1,6 @@
 package ch.etmles.payroll.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -13,12 +11,15 @@ public class Employee {
     @GeneratedValue Long id;
     private String name;
     private String role;
+    @Column(name="EMPLOYEE_EMAIL", nullable=false, unique=true)
+    private String email;
 
     public Employee(){}
 
-    public Employee(String name, String role){
+    public Employee(String name, String role, String email){
         this.setName(name);
         this.setRole(role);
+        this.setEmail(email);
     }
 
     public Long getID(){
@@ -45,6 +46,14 @@ public class Employee {
         this.role = role;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o){
         if(this == o)
@@ -62,6 +71,7 @@ public class Employee {
 
     @Override
     public String toString(){
-        return "Employee{" + "id=" + this.getID() + ", name='" + this.getName() + '\'' + ", role='" + this.getRole() + '\'' + '}';
+        return "Employee{" + "id=" + this.getID() + ", name='" + this.getName() + '\'' + ", role='" + this.getRole() + '\'' + ", email='" + this.getEmail() + '}';
     }
+
 }
