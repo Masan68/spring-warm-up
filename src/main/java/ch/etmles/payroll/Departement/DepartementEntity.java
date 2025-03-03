@@ -8,19 +8,19 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class Departement {
+public class DepartementEntity {
 
     private @Id
     @GeneratedValue Long id;
 
-    @Column(name="DEPARTEMENT_NAME", nullable=false, unique=true)
+    @Column(name="T_NAME", nullable=false, unique=true)
     private String name;
 
-    public Departement(String name) {
-        this.name = name;
+    public DepartementEntity(String name) {
+        this.setName(name);
     }
 
-    public Departement() {}
+    public DepartementEntity() {}
 
 
     public Long getID(){

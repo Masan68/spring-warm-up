@@ -5,18 +5,18 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Employee {
+public class EmployeeEntity {
 
     private @Id
     @GeneratedValue Long id;
     private String name;
     private String role;
-    @Column(name="EMPLOYEE_EMAIL", nullable=false, unique=true)
+    @Column(name="T_EMAIL", nullable=false, unique=true)
     private String email;
 
-    public Employee(){}
+    public EmployeeEntity(){}
 
-    public Employee(String name, String role, String email){
+    public EmployeeEntity(String name, String role, String email){
         this.setName(name);
         this.setRole(role);
         this.setEmail(email);
@@ -58,7 +58,7 @@ public class Employee {
     public boolean equals(Object o){
         if(this == o)
             return true;
-        if(!(o instanceof Employee employee))
+        if(!(o instanceof EmployeeEntity employee))
             return false;
         return Objects.equals(this.id, employee.id) && Objects.equals(this.name, employee.name)
                 && Objects.equals(this.role, employee.role);

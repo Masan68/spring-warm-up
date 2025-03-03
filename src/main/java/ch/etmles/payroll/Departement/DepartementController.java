@@ -18,7 +18,7 @@ public class DepartementController {
     curl -i localhost:8080/departements
     */
     @GetMapping("/departements")
-    List<Departement> all(){
+    List<DepartementEntity> all(){
         return repository.findAll();
     }
 
@@ -28,7 +28,7 @@ public class DepartementController {
         -d "{\"name\": \"Bureau 1\" }"
     */
     @PostMapping("/departements")
-    Departement newDepartement(@RequestBody Departement newDepartement){
+    DepartementEntity newDepartement(@RequestBody DepartementEntity newDepartement){
         return repository.save(newDepartement);
     }
 
@@ -36,7 +36,7 @@ public class DepartementController {
     curl -i localhost:8080/departements/3
     */
     @GetMapping("/departements/{id}")
-    Departement one(@PathVariable Long id){
+    DepartementEntity one(@PathVariable Long id){
         return repository.findById(id)
                 .orElseThrow(() -> new DepartementNotFoundException(id));
     }
@@ -47,7 +47,7 @@ public class DepartementController {
     -d "{\"name\": \"Bureau 3\"}"
     */
     @PutMapping("/departements/{id}")
-    Departement replaceDepartement(@RequestBody Departement newDepartement, @PathVariable Long id) {
+    DepartementEntity replaceDepartement(@RequestBody DepartementEntity newDepartement, @PathVariable Long id) {
         return repository.findById(id)
                 .map(departement -> {
                     departement.setName(newDepartement.getName());

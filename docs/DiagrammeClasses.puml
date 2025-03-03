@@ -1,6 +1,49 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+
+package "Data Layer" {
+    JpaRepository <|--  EmployeeRepository
+    EmployeeRepository <-- EmployeeEntity
+
+    interface EmployeeRepository{
+    }
+    interface JpaRepository{
+
+    }
+    class EmployeeEntity{
+        -privateName : string
+        -privateRole : string
+        -privateEmail : string
+        -privateId : Long id
+
+        +EmployeeEntity(name:string, role:string, email:string)
+        +<get,set>name() : string
+        +<get,set>role() : string
+        +<get,set>email() : string
+        +<get,set>id() : Long
+        +publicEquals(o : Object) : boolean
+        +publicHashCode() : int
+        +publicToString() : string
+    }
+}
+package "Controller Layer"{
+    EmployeeRepository <-- EmployeeController
+    class EmployeeController{
+        -privateRepository : EmployeeRepository;
+        +EmployeeController(repository : EmployeeRepository)
+        +publicAll() : List<Employee>
+        +publicNewEmployee(newEmployee : Employee) : Employee
+        +publicOne(id : Long) : Employee
+        +publicReplaceEmployee(newEmployee : Employee, id : Long) : Employee
+    }
+}
+
+@enduml
+
+@startuml
+'https://plantuml.com/class-diagram
+
 package ch{
     package etmles{
         package payroll{
