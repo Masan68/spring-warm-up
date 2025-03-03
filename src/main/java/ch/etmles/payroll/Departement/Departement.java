@@ -1,4 +1,4 @@
-package ch.etmles.payroll.Entities;
+package ch.etmles.payroll.Departement;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

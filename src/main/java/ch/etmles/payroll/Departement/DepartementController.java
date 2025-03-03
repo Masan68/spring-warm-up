@@ -1,9 +1,6 @@
-package ch.etmles.payroll.Controllers;
+package ch.etmles.payroll.Departement;
 
-import ch.etmles.payroll.Entities.Departement;
-import ch.etmles.payroll.Entities.Employee;
-import ch.etmles.payroll.Repositories.DepartementRepository;
-import ch.etmles.payroll.Repositories.EmployeeRepository;
+import ch.etmles.payroll.Employee.EmployeeNotFoundDeleted;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

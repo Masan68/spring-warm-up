@@ -1,4 +1,4 @@
-package ch.etmles.payroll.Controllers;
+package ch.etmles.payroll.Employee;
 
 public class EmployeeNotFoundDeleted extends RuntimeException {
     public EmployeeNotFoundDeleted(Long id) {
